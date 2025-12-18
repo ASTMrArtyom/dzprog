@@ -92,14 +92,13 @@ def main():
     rcs_values = [calculator.calculate_rcs(f) for f in freqs]
 
     plt.figure(figsize=(10, 6))
-    plt.plot(freqs, rcs_values)
-    plt.xscale('log')
-    plt.yscale('log')
+    plt.plot(freqs, rcs_values, 'b-', linewidth=2)
     plt.xlabel('Frequency (Hz)')
     plt.ylabel('RCS (m²)')
     plt.title(f'ЭПР идеально проводящей сферы (D = {D} м)')
-    plt.grid(True)
-    plt.savefig('rcs_plot.png')
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('rcs_plot_linear.png', dpi=150)
     plt.show()
 
     writer = ResultWriter('result.csv', output_format)
